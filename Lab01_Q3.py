@@ -4,17 +4,18 @@
 
 import numpy as np
 from time import time
+import matplotlib.pyplot as plt
 
 # Initialize a time array
 
-times = np.zeros(6, float)
+times = []
 
 # Using the code snippet from example 4.3 of the textbook
 
-N_range = [2, 10, 50, 100, 200, 500]
+N_range = np.array([2, 10, 50, 100, 150, 200, 300, 400, 500])
 
 # Iterate over range of Ns. We will time how long each iteration takes. 
-For N in N_range:
+for N in N_range:
     
 #Create two constant matrices A and B using np.ones. Create array C of zeros.
     A = np.ones([N,N], float)*3 #Each entry is equal to 3
@@ -30,11 +31,53 @@ For N in N_range:
                 
     end = time() # save end time
     diff = end - start # elapsed time in seconds
-    
-    np.append(times, diff) 
-          
-print(times)      
+   
+    times.append(diff)
+
+#Plotting time as a function of N and as a function of N^3
+
+plt.figure()
+plt.plot(N_range, times)
+plt.title('Time as a function of N')
+plt.xlabel('N')
+plt.ylabel('t [sec]')
+plt.show()
+
+plt.figure()
+plt.plot(N_range**3, times)
+plt.title('Time as a function of N^3')
+plt.xlabel('N**3')
+plt.ylabel('t [sec]')
+plt.show()
+           
                 
 # Same operation but using np.dot
+
+dot_times = []
+
+# Iterate over range of Ns. We will time how long each iteration takes. 
+for N in N_range:
+
+#Create two constant matrices A and B using np.ones. 
+    A = np.ones([N,N], float)*3 #Each entry is equal to 3
+    B = np.ones([N,N], float)*4 # Each entry is equal to 4  
     
+    start = time() # save start time
     
+    np.dot(A, B)
+                
+    end = time() # save end time
+    diff = end - start # elapsed time in seconds
+   
+    dot_times.append(diff)
+    
+print(times, dot_times)
+
+#Plot for comparison 
+
+plt.figure()
+plt.plot(N_range, dot_times)
+plt.title('np.dot times as a function of N')
+plt.xlabel('N')
+plt.ylabel('t [sec]')
+plt.show()
