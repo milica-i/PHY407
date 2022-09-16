@@ -1,5 +1,6 @@
 # Timitng Matrix multiplication
-# This code ___
+# This code follows Example 4.3 of the textbook to multiply matrices of size O(N).
+# We time how long this take for various values of N. We compare these times with np.dot.
 # Author: Milica Ivetic
 
 import numpy as np
@@ -12,7 +13,7 @@ times = []
 
 # Using the code snippet from example 4.3 of the textbook
 
-N_range = np.array([2, 10, 50, 100, 150, 200, 300, 400, 500])
+N_range = np.array([2, 10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500])
 
 # Iterate over range of Ns. We will time how long each iteration takes. 
 for N in N_range:
@@ -38,15 +39,15 @@ for N in N_range:
 
 plt.figure()
 plt.plot(N_range, times)
-plt.title('Time as a function of N')
+plt.title('Matrix multiplication time as a function of N')
 plt.xlabel('N')
 plt.ylabel('t [sec]')
 plt.show()
 
 plt.figure()
 plt.plot(N_range**3, times)
-plt.title('Time as a function of N^3')
-plt.xlabel('N**3')
+plt.title('Matrix multiplication time as a function of N^3')
+plt.xlabel('N^3')
 plt.ylabel('t [sec]')
 plt.show()
            
@@ -79,5 +80,12 @@ plt.figure()
 plt.plot(N_range, dot_times)
 plt.title('np.dot times as a function of N')
 plt.xlabel('N')
+plt.ylabel('t [sec]')
+plt.show()
+
+plt.figure()
+plt.plot(N_range**3, dot_times)
+plt.title('np.dot times as a function of N^3')
+plt.xlabel('N^3')
 plt.ylabel('t [sec]')
 plt.show()
