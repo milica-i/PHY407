@@ -90,17 +90,3 @@ error_2 = (1/3)*(I2 - I1)
 print('The practical error estimation for Trapezoidal rule with N2 = 32 is', error_2)
 
 
-#Question 2e
-
-print('Question 2e')
-
-#Checking for Simpson's method, using equation 5.29
-
-I1s = trap_sim.simpson(f, N1, 0, 1)
-I2s = trap_sim.simpson(f, N2, 0, 1)
-
-error_2_s = (1/15)*(I2s - I1s)
-
-print('The practical error estimation for Simpson\'s rule with N2 = 32 is', error_2_s)
-
-
