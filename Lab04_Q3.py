@@ -1,5 +1,7 @@
-#This code ___
-# Authors: 
+#This code explores different methods for solving non-linear systems:
+# Relaxation, Overrelaxation, and Binaary Search. Questions from Newman (2012)
+
+# Authors: Milica Ivetic (3a, 3b), Madeline Nardin (3c)
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,8 +17,9 @@ print('Question 3a')
 
 #Pseudocode for 3a - 6.10a
 #1. Define function, constants, initial guess, and convergence threshold, x_list
-#2. ???
+#2. Perform relaxation calculation using method described in Newman
 
+#1.
 #the function we are considering for this question
 def f(x, c):
     return 1 - np.e**(-c*x)
@@ -29,7 +32,7 @@ dx = 1 #initial distance
 threshold = 1e-6
 x_list = [x]
 
-
+#2. 
 while dx > threshold:
     x_list.append(f(x_list[-1], c))
     dx = np.abs(x_list[-1] - x_list[-2])
@@ -39,8 +42,8 @@ print('The solution converges to', x_list[-1])
 
 
 #Pseudocode for 3a - 6.10b
-#1. Initialize c_array,
-#2. ???
+#1. Initialize c_array, and xsols array
+#2. For each c value, perform relaxation calculation, save results to array
 
 c_array = np.arange(0, 3, 0.01)
 x_sols = np.zeros(len(c_array))
@@ -54,15 +57,13 @@ for i in range(len(c_array)):
         dx = np.abs(x_list[-1] - x_list[-2]) 
     x_sols[i] = x_list[-1]
     
-#print(x_sols)
 
 plt.figure()
 plt.plot(c_array, x_sols)
 plt.xlabel('c')
 plt.ylabel('x')
+plt.title('Solution as a function of c')
 plt.show()
-
-
 
 
 
@@ -88,7 +89,7 @@ print('The solution converges to', x_list[-1], 'after', counter, 'iterations.')
 
 
 #Pseudocode for 3b - 6.11c
-#Modify previous code to use overrelaxation 
+#Modify previous code to use overrelaxation method
 
 c = 2 
 x = 0.5 #initial guess
@@ -137,9 +138,9 @@ while dx > threshold:
     counter += 1
     x_list.append((1+w)*g(x_list[-1]) - w*x_list[-1])
     dx = np.abs(x_list[-1] - x_list[-2])
-    print(counter, x_list[-1])
     
-print('The solution converges to', x_list[-1], 'after', counter, 'iterations.')
+print('The solution converges to', x_list[-1], 'after', counter, 'iterations \
+ for x = e^(1-x^2) ')
 
 
 #Question 3c
