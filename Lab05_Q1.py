@@ -105,7 +105,6 @@ plt.title('Position vs. time of relativistic particle on spring for $x_0$ = 1m')
 plt.plot(t, x1, c='blue')
 plt.xlabel('Time [s]')
 plt.ylabel('Position [m]')
-plt.ylabel
 plt.xlim(0,20)
 plt.show()
 
@@ -114,7 +113,6 @@ plt.title('Position vs. time of relativistic particle on spring for $x_0 = x_c$'
 plt.plot(t, x2,c='orange')
 plt.xlabel('Time [s]')
 plt.ylabel('Position [m]')
-plt.ylabel
 plt.xlim(0,30)
 plt.show()
 
@@ -123,7 +121,6 @@ plt.title('Position vs. time of relativistic particle on spring for $x_0 = 10x_c
 plt.plot(t, x3, c='green')
 plt.xlabel('Time [s]')
 plt.ylabel('Position [m]')
-plt.ylabel
 plt.show()
 
 
@@ -131,12 +128,12 @@ plt.show()
 print('Question 1b - see plot')
 
 #Pseudocode for Question 1b
-#1. For each case, calculate the Fourier transform using np.fft.fft
+#1. For each case, calculate the Fourier transform using np.fft.rfft
 #2. Find the max values of each transformed array and calculate scaled arrays
 #3. Plot the transforms on the same plot
 
 
-#1. For each case, calculate the Fourier transform using np.fft.fft
+#1. For each case, calculate the Fourier transform using np.fft.rfft
 x1_t = np.fft.rfft(x1) #Fourier transform
 x2_t = np.fft.rfft(x2)
 x3_t = np.fft.rfft(x3)
