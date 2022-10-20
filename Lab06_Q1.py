@@ -116,58 +116,58 @@ vy2c = np.array([], dtype=object)
 #x1a.append(x1a0)
 x1a = np.append(x1a, x1a0)
 print('dfd',x1a)
-y1a = np.append(y1a,y1a0)
-x2a = .append(x2a0)
-y2a.append(y2a0)
+y1a = np.append(y1a, y1a0)
+x2a = np.append(x2a, x2a0)
+y2a = np.append(y2a, y2a0)
 
-vx1a.append(v0)
-vy1a.append(v0)
-vx2a.append(v0)
-vy2a.append(v0)
+vx1a = np.append(vx1a, v0)
+vy1a = np.append(vy1a, v0)
+vx2a = np.append(vx2a, v0)
+vy2a = np.append(vy2a, v0)
 
 
 #b
-x1b.append(x1b0)
-y1b.append(y1b0)
-x2b.append(x2b0)
-y2b.append(y2b0)
+x1b = np.append(x1b, x1b0)
+y1b = np.append(y1b, y1b0)
+x2b = np.append(x2b, x2b0)
+y2b = np.append(y2b, y2b0)
 
-vx1b.append(v0)
-vy1b.append(v0)
-vx2b.append(v0)
-vy2b.append(v0)
+vx1b = np.append(vx1b, v0)
+vy1b = np.append(vy1b, v0)
+vx2b = np.append(vx2b, v0)
+vy2b = np.append(vy2b, v0)
 
 #c
-x1c.append(x1c0)
-y1c.append(y1c0)
-x2c.append(x2c0)
-y2c.append(y2c0)
+x1c = np.append(x1c, x1c0)
+y1c = np.append(y1c, y1c0)
+x2c = np.append(x2c, x2c0)
+y2c = np.append(y2c, y2c0)
 
-vx1c.append(v0)
-vy1c.append(v0)
-vx2c.append(v0)
-vy2c.append(v0)
+vx1c = np.append(vx1c, v0)
+vy1c = np.append(vy1c, v0)
+vx2c = np.append(vx2c, v0)
+vy2c = np.append(vy2c, v0)
 
 
 #2. Implement Verlet method on both particles for 3 different sets of initial conditions
 
 #Set a
 
-kx1a = []
-ky1a = []
-kx2a = []
-ky2a = []
+kx1a = np.array([], dtype=object)
+ky1a = np.array([], dtype=object)
+kx2a = np.array([], dtype=object)
+ky2a = np.array([], dtype=object)
 
 #First time step:
 
-for i in range(len(t)-1):
+for i in range(len(t)):
                               if i == 0:
                                                             print('dsfds',vx1a[-1], vx2a[-1], vy1a[-1], vy2a[-1])
                                                             #v[t+dt/2] = v[t] + (dt/2)*f(r[t], t)
-                                                            vx1a.append(vx1a + (dt/2)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            vy1a.append(vy1a + (dt/2)*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            vx2a.append(vx1a - (dt/2)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            vy2a.append(vy1a - (dt/2)*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
+                                                            vx1a = np.append(vx1a, vx1a + (dt/2)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
+                                                            vy1a = np.append(vy1a, vy1a + (dt/2)*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
+                                                            vx2a = np.append(vx2a, vx2a - (dt/2)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
+                                                            vy2a = np.append(vy2a, vy2a - (dt/2)*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             print('func',fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             print('func',fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             print('dsfds',vx1a[-1], vx2a[-1], vy1a[-1], vy2a[-1])
@@ -178,27 +178,148 @@ for i in range(len(t)-1):
                                                             #v[t+h] = v[t+dt/2] + (1/2)*k -> NOT NEEDED FOR TIMESTEPPING
                                                             #v[t+3*dt/2] = v[t + dt/2] + k   
                                                             
-                                                            x1a.append(x1a[-1] + dt*vx1a[-1])
-                                                            y1a.append(y1a[-1] + dt*vy1a[-1])
-                                                            x2a.append(x2a[-1] + dt*vx2a[-1])
-                                                            y2a.append(y2a[-1] + dt*vy2a[-1])
+                                                            x1a = np.append(x1a, x1a[-1] + dt*vx1a[-1])
+                                                            y1a = np.append(y1a, y1a[-1] + dt*vy1a[-1])
+                                                            x2a = np.append(x2a, x2a[-1] + dt*vx2a[-1])
+                                                            y2a = np.append(y2a, y2a[-1] + dt*vy2a[-1])
                                                             
                                                             print(x1a[-1], x2a[-1], y1a[-1], y2a[-1])
                                                             print('cvxcxv',fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            kx1a.append(dt*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            ky1a.append(dt*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            kx2a.append(dt*(-1)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            ky2a.append(dt*(-1)*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
+                                                            kx1a = np.append(kx1a, dt*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
+                                                            ky1a = np.append(ky1a, dt*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
+                                                            kx2a = np.append(kx2a, dt*(-1)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
+                                                            ky2a = np.append(ky2a, dt*(-1)*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             
-                                                            vx1a.append(vx1a[-1] + kx1a[-1])
-                                                            vy1a.append(vy1a[-1] + ky1a[-1])
-                                                            vx2a.append(vx2a[-1] + kx2a[-1])
-                                                            vy2a.append(vy2a[-1] + ky2a[-1])
+                                                            vx1a = np.append(vx1a, vx1a[-1] + kx1a[-1])
+                                                            vy1a = np.append(vy1a, vy1a[-1] + ky1a[-1])
+                                                            vx2a = np.append(vx2a, vx2a[-1] + kx2a[-1])
+                                                            vy2a = np.append(vy2a, vy2a[-1] + ky2a[-1])
                               
                               
-print(x1a, y1a)
-                                                            
-                                                            
-                                                       
+print(len(x1a), len(y1a))
                                                             
 
+                                                            
+#Set b
+
+kx1b = np.array([], dtype=object)
+ky1b = np.array([], dtype=object)
+kx2b = np.array([], dtype=object)
+ky2b = np.array([], dtype=object)
+
+#First time step:
+
+for i in range(len(t)):
+                              if i == 0:
+                                                          
+                                                            #v[t+dt/2] = v[t] + (dt/2)*f(r[t], t)
+                                                            vx1b = np.append(vx1b, vx1b + (dt/2)*fx(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
+                                                            vy1b = np.append(vy1b, vy1b + (dt/2)*fy(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
+                                                            vx2b = np.append(vx2b, vx2b - (dt/2)*fx(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
+                                                            vy2b = np.append(vy2b, vy2b - (dt/2)*fy(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
+                              
+                              else:
+                                                            print(i)
+                                                            #r[t + dt] = r[t] + dt*v[t+dt/2]
+                                                            #k = dt*f(r[t+dt], t+dt)
+                                                            #v[t+h] = v[t+dt/2] + (1/2)*k -> NOT NEEDED FOR TIMESTEPPING
+                                                            #v[t+3*dt/2] = v[t + dt/2] + k   
+                                                            
+                                                            x1b = np.append(x1b, x1b[-1] + dt*vx1b[-1])
+                                                            y1b = np.append(y1b, y1b[-1] + dt*vy1b[-1])
+                                                            x2b = np.append(x2b, x2b[-1] + dt*vx2b[-1])
+                                                            y2b = np.append(y2b, y2b[-1] + dt*vy2b[-1])
+                                                            
+                                                            
+                                                            kx1b = np.append(kx1b, dt*fx(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
+                                                            ky1b = np.append(ky1b, dt*fy(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
+                                                            kx2b = np.append(kx2b, dt*(-1)*fx(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
+                                                            ky2b = np.append(ky2b, dt*(-1)*fy(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
+                                                            
+                                                            vx1b = np.append(vx1b, vx1b[-1] + kx1b[-1])
+                                                            vy1b = np.append(vy1b, vy1b[-1] + ky1b[-1])
+                                                            vx2b = np.append(vx2b, vx2b[-1] + kx2b[-1])
+                                                            vy2b = np.append(vy2b, vy2b[-1] + ky2b[-1])
+                                                            
+                                                            
+
+#Set c
+                                                            
+kx1c = np.array([], dtype=object)
+ky1c = np.array([], dtype=object)
+kx2c = np.array([], dtype=object)
+ky2c = np.array([], dtype=object)
+                                                            
+#First time step:
+                                                            
+for i in range(len(t)):
+                              if i == 0:
+                                                                                                                      
+                                                            #v[t+dt/2] = v[t] + (dt/2)*f(r[t], t)
+                                                            vx1c = np.append(vx1c, vx1c + (dt/2)*fx(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
+                                                            vy1c = np.append(vy1c, vy1c + (dt/2)*fy(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
+                                                            vx2c = np.append(vx2c, vx2c - (dt/2)*fx(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
+                                                            vy2c = np.append(vy2c, vy2c - (dt/2)*fy(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
+                                                                                          
+                              else:
+                                                            print(i)
+                                                            #r[t + dt] = r[t] + dt*v[t+dt/2]
+                                                            #k = dt*f(r[t+dt], t+dt)
+                                                            #v[t+h] = v[t+dt/2] + (1/2)*k -> NOT NEEDED FOR TIMESTEPPING
+                                                            #v[t+3*dt/2] = v[t + dt/2] + k   
+                                                                                                                        
+                                                            x1c = np.append(x1c, x1c[-1] + dt*vx1c[-1])
+                                                            y1c = np.append(y1c, y1c[-1] + dt*vy1c[-1])
+                                                            x2c = np.append(x2c, x2c[-1] + dt*vx2c[-1])
+                                                            y2c = np.append(y2c, y2c[-1] + dt*vy2c[-1])
+                                                                                                                        
+                                                                                                                        
+                                                            kx1c = np.append(kx1c, dt*fx(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
+                                                            ky1c = np.append(ky1c, dt*fy(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
+                                                            kx2c = np.append(kx2c, dt*(-1)*fx(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
+                                                            ky2c = np.append(ky2c, dt*(-1)*fy(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
+                                                                                                                        
+                                                            vx1c = np.append(vx1c, vx1c[-1] + kx1c[-1])
+                                                            vy1c = np.append(vy1c, vy1c[-1] + ky1c[-1])
+                                                            vx2c = np.append(vx2c, vx2c[-1] + kx2c[-1])
+                                                            vy2c = np.append(vy2c, vy2c[-1] + ky2c[-1])
+
+                                                      
+#3. Plot trajectories for each set of initial conditions
+
+print(len(t), len(x1a), len(x1b))
+
+#set a
+plt.figure()
+plt.scatter(x1a, y1a)
+plt.scatter(x2a, y2a)
+plt.show()
+
+plt.figure()
+plt.scatter(t, x1a)
+plt.scatter(t, x2a)
+plt.show()
+
+
+#set b
+plt.figure()
+plt.scatter(x1b, y1b)
+plt.scatter(x2b, y2b)
+plt.show()
+
+plt.figure()
+plt.scatter(t, x1b)
+plt.scatter(t, x2b)
+plt.show()
+
+
+#set c
+plt.figure()
+plt.scatter(x1c, y1c)
+plt.scatter(x2c, y2c)
+plt.show()
+
+plt.figure()
+plt.scatter(t, x1c)
+plt.scatter(t, x2c)
+plt.show()
