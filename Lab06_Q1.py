@@ -8,12 +8,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.rcParams['axes.titlesize'] = 13
+plt.rcParams['axes.labelsize'] = 13
+plt.rcParams['xtick.labelsize'] = 11
+plt.rcParams['ytick.labelsize'] = 11
+
 
 #Question 1b
 print('Question 1b')
 
 #Pseudocode for Question 1b:
-#1. Initialize time array, velocities, x and y arrays, and function f we are working with
+#1. Initialize time array, velocities, x and y arrays, and functions we are working with
 #2. Implement Verlet method on both particles for 3 different sets of initial conditions
 #2a: Verlet method is as follows:
 #For the first step: v[t+dt/2] = v[t] + (dt/2)*f(r[t], t)
@@ -27,6 +32,7 @@ print('Question 1b')
 
 #1. Initialize time array, velocities, x and y arrays, and functions fx and fy we are working with
 
+#x-component
 def fx(x1, x2, y1, y2):
                               w = x2 - x1
                               z = y2 - y1
@@ -34,7 +40,7 @@ def fx(x1, x2, y1, y2):
                               
                               return -4*(12/(r)**14 - 6/(r)**8)*w
 
-
+#y-component
 def fy(x1, x2, y1, y2):
                               w = x2 - x1
                               z = y2 - y1
@@ -113,9 +119,7 @@ vy2c = np.array([], dtype=object)
 #initialize
 
 #a
-#x1a.append(x1a0)
 x1a = np.append(x1a, x1a0)
-print('dfd',x1a)
 y1a = np.append(y1a, y1a0)
 x2a = np.append(x2a, x2a0)
 y2a = np.append(y2a, y2a0)
@@ -162,17 +166,13 @@ ky2a = np.array([], dtype=object)
 
 for i in range(len(t)):
                               if i == 0:
-                                                            print('dsfds',vx1a[-1], vx2a[-1], vy1a[-1], vy2a[-1])
                                                             #v[t+dt/2] = v[t] + (dt/2)*f(r[t], t)
                                                             vx1a = np.append(vx1a, vx1a + (dt/2)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             vy1a = np.append(vy1a, vy1a + (dt/2)*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             vx2a = np.append(vx2a, vx2a - (dt/2)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             vy2a = np.append(vy2a, vy2a - (dt/2)*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            print('func',fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            print('func',fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
-                                                            print('dsfds',vx1a[-1], vx2a[-1], vy1a[-1], vy2a[-1])
+                              
                               else:
-                                                            print(i)
                                                             #r[t + dt] = r[t] + dt*v[t+dt/2]
                                                             #k = dt*f(r[t+dt], t+dt)
                                                             #v[t+h] = v[t+dt/2] + (1/2)*k -> NOT NEEDED FOR TIMESTEPPING
@@ -183,8 +183,6 @@ for i in range(len(t)):
                                                             x2a = np.append(x2a, x2a[-1] + dt*vx2a[-1])
                                                             y2a = np.append(y2a, y2a[-1] + dt*vy2a[-1])
                                                             
-                                                            print(x1a[-1], x2a[-1], y1a[-1], y2a[-1])
-                                                            print('cvxcxv',fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             kx1a = np.append(kx1a, dt*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             ky1a = np.append(ky1a, dt*fy(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
                                                             kx2a = np.append(kx2a, dt*(-1)*fx(x1a[-1], x2a[-1], y1a[-1], y2a[-1]))
@@ -195,11 +193,7 @@ for i in range(len(t)):
                                                             vx2a = np.append(vx2a, vx2a[-1] + kx2a[-1])
                                                             vy2a = np.append(vy2a, vy2a[-1] + ky2a[-1])
                               
-                              
-print(len(x1a), len(y1a))
-                                                            
-
-                                                            
+                                                                                                                 
 #Set b
 
 kx1b = np.array([], dtype=object)
@@ -219,7 +213,6 @@ for i in range(len(t)):
                                                             vy2b = np.append(vy2b, vy2b - (dt/2)*fy(x1b[-1], x2b[-1], y1b[-1], y2b[-1]))
                               
                               else:
-                                                            print(i)
                                                             #r[t + dt] = r[t] + dt*v[t+dt/2]
                                                             #k = dt*f(r[t+dt], t+dt)
                                                             #v[t+h] = v[t+dt/2] + (1/2)*k -> NOT NEEDED FOR TIMESTEPPING
@@ -262,7 +255,6 @@ for i in range(len(t)):
                                                             vy2c = np.append(vy2c, vy2c - (dt/2)*fy(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
                                                                                           
                               else:
-                                                            print(i)
                                                             #r[t + dt] = r[t] + dt*v[t+dt/2]
                                                             #k = dt*f(r[t+dt], t+dt)
                                                             #v[t+h] = v[t+dt/2] + (1/2)*k -> NOT NEEDED FOR TIMESTEPPING
@@ -272,8 +264,7 @@ for i in range(len(t)):
                                                             y1c = np.append(y1c, y1c[-1] + dt*vy1c[-1])
                                                             x2c = np.append(x2c, x2c[-1] + dt*vx2c[-1])
                                                             y2c = np.append(y2c, y2c[-1] + dt*vy2c[-1])
-                                                                                                                        
-                                                                                                                        
+                                                                                                                                                                     
                                                             kx1c = np.append(kx1c, dt*fx(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
                                                             ky1c = np.append(ky1c, dt*fy(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
                                                             kx2c = np.append(kx2c, dt*(-1)*fx(x1c[-1], x2c[-1], y1c[-1], y2c[-1]))
@@ -284,42 +275,84 @@ for i in range(len(t)):
                                                             vx2c = np.append(vx2c, vx2c[-1] + kx2c[-1])
                                                             vy2c = np.append(vy2c, vy2c[-1] + ky2c[-1])
 
-                                                      
+          
+                                           
 #3. Plot trajectories for each set of initial conditions
 
-print(len(t), len(x1a), len(x1b))
 
 #set a
-plt.figure()
-plt.scatter(x1a, y1a)
-plt.scatter(x2a, y2a)
-plt.show()
+
 
 plt.figure()
-plt.scatter(t, x1a)
-plt.scatter(t, x2a)
+plt.plot(x1a, y1a, '.')
+plt.plot(x2a, y2a, '.')
+plt.title('Trajectories of both particles: first set of initial conditions')
+plt.xlabel('x')
+plt.ylabel('y')
 plt.show()
+
+
+#x vs. time of both particles, don't need to submit
+#OSCILLATION IN X VS. T FOR BOTH PARTICLES
+#plt.figure()
+#plt.scatter(t, x1a)
+#plt.scatter(t, x2a)
+#plt.show()
+
+#plt.figure()
+#plt.scatter(t, y1a)
+#plt.scatter(t, y2a)
+#plt.show()
 
 
 #set b
-plt.figure()
-plt.scatter(x1b, y1b)
-plt.scatter(x2b, y2b)
-plt.show()
 
 plt.figure()
-plt.scatter(t, x1b)
-plt.scatter(t, x2b)
+plt.plot(x1b, y1b, '.')
+plt.plot(x2b, y2b, '.')
+plt.title('Trajectories of both particles: second set of initial conditions')
+plt.xlabel('x')
+plt.ylabel('y')
 plt.show()
+
+#x vs. time of both particles, don't need to submit
+#Particles fly away from each other
+#plt.figure()
+#plt.title('set b')
+#plt.scatter(t, x1b)
+#plt.scatter(t, x2b)
+#plt.ylabel('x')
+#plt.show()
+
+#plt.figure()
+#plt.title('set b')
+#plt.scatter(t, y1b)
+#plt.scatter(t, y2b)
+#plt.ylabel('y')
+#plt.show()
+
 
 
 #set c
-plt.figure()
-plt.scatter(x1c, y1c)
-plt.scatter(x2c, y2c)
-plt.show()
 
 plt.figure()
-plt.scatter(t, x1c)
-plt.scatter(t, x2c)
+plt.plot(x1c, y1c, '.')
+plt.plot(x2c, y2c, '.')
+plt.title('Trajectories of both particles: third set of initial conditions')
+plt.xlabel('x')
+plt.ylabel('y')
 plt.show()
+
+#x vs. time of both particles, don't need to submit
+#Particles start attracting 
+#plt.figure()
+#plt.title('set c')
+#plt.scatter(t, x1c)
+#plt.scatter(t, x2c)
+#plt.show()
+
+#plt.figure()
+#plt.scatter(t, y1c)
+#plt.scatter(t, y2c)
+#plt.show()
+
