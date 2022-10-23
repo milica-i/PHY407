@@ -284,11 +284,12 @@ for i in range(len(t)):
 
 
 plt.figure()
-plt.plot(x1a, y1a, '.')
-plt.plot(x2a, y2a, '.')
+plt.plot(x1a, y1a, '.', label = '1')
+plt.plot(x2a, y2a, '.', label = '2')
 plt.title('Trajectories of both particles: first set of initial conditions')
 plt.xlabel('x')
 plt.ylabel('y')
+plt.legend()
 plt.show()
 
 
@@ -308,11 +309,12 @@ plt.show()
 #set b
 
 plt.figure()
-plt.plot(x1b, y1b, '.')
-plt.plot(x2b, y2b, '.')
+plt.plot(x1b, y1b, '.', label = '1')
+plt.plot(x2b, y2b, '.', label = '2')
 plt.title('Trajectories of both particles: second set of initial conditions')
 plt.xlabel('x')
 plt.ylabel('y')
+plt.legend()
 plt.show()
 
 #x vs. time of both particles, don't need to submit
@@ -336,11 +338,12 @@ plt.show()
 #set c
 
 plt.figure()
-plt.plot(x1c, y1c, '.')
-plt.plot(x2c, y2c, '.')
+plt.plot(x1c, y1c, '.', label = '1')
+plt.plot(x2c, y2c, '.', label = '2')
 plt.title('Trajectories of both particles: third set of initial conditions')
 plt.xlabel('x')
 plt.ylabel('y')
+plt.legend()
 plt.show()
 
 #x vs. time of both particles, don't need to submit
