@@ -7,8 +7,6 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from pylab import imshow, gray, show
-import scipy.integrate as integrate
 from time import time
 
 plt.rcParams['axes.titlesize'] = 13
